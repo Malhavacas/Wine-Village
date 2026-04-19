@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -65,6 +66,18 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+# Download endpoint for Vercel deploy package
+@api_router.get("/download/vercel")
+async def download_vercel_package():
+    file_path = Path("/app/frontend/wine-village-vercel.tar.gz")
+    if file_path.exists():
+        return FileResponse(
+            path=str(file_path),
+            filename="wine-village-vercel.tar.gz",
+            media_type="application/gzip"
+        )
+    return {"error": "Build not found. Run yarn build first."}
 
 # Include the router in the main app
 app.include_router(api_router)

@@ -44,11 +44,11 @@ export const AboutSection = () => {
               </div>
 
               {/* Year badge */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-24 h-24 sm:w-28 sm:h-28 rounded-full flex flex-col items-center justify-center"
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-28 h-28 sm:w-32 sm:h-32 rounded-full flex flex-col items-center justify-center text-center"
                 style={{ backgroundColor: "#722F37" }}
               >
-                <span className="font-serif text-2xl sm:text-3xl text-[#DAA520]">2019</span>
-                <span className="text-[8px] font-sans tracking-[0.15em] uppercase text-[#F5F0E8]/60 mt-0.5">
+                <span className="font-serif text-2xl sm:text-3xl text-[#DAA520] leading-none">2019</span>
+                <span className="text-[7px] font-sans tracking-[0.12em] uppercase text-[#F5F0E8]/60 mt-1.5 px-2 leading-tight">
                   {lang === "pt" ? "Desde o primeiro brinde" : "Since the first toast"}
                 </span>
               </div>

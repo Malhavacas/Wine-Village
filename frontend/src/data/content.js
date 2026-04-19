@@ -357,5 +357,5 @@ export const reviewsData = [
 
 export const images = {
   hero: "https://images.pexels.com/photos/5083907/pexels-photo-5083907.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  about: "https://images.unsplash.com/photo-1722307036188-57649793ddcf?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=800",
+  about: "https://images.pexels.com/photos/5004027/pexels-photo-5004027.jpeg?auto=compress&cs=tinysrgb&w=800",
 };
