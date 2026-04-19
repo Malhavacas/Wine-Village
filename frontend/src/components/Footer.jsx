@@ -7,11 +7,21 @@ export const Footer = () => {
   const t = content[lang].footer;
 
   const handleDownload = () => {
-    const html = document.documentElement.outerHTML;
-    const blob = new Blob(
-      [`<!DOCTYPE html><html>${html}</html>`],
-      { type: "text/html;charset=utf-8" }
-    );
+    const clone = document.documentElement.cloneNode(true);
+    // Remove React scripts and dev tools
+    clone.querySelectorAll('script').forEach(s => s.remove());
+    clone.querySelectorAll('#emergent-badge').forEach(s => s.remove());
+    clone.querySelectorAll('[data-debug-wrapper]').forEach(s => s.remove());
+    const cssText = Array.from(document.styleSheets)
+      .map(sheet => {
+        try { return Array.from(sheet.cssRules).map(r => r.cssText).join('\n'); }
+        catch(e) { return ''; }
+      }).join('\n');
+    const styleEl = document.createElement('style');
+    styleEl.textContent = cssText;
+    clone.querySelector('head').appendChild(styleEl);
+    const html = `<!DOCTYPE html>\n<html lang="pt">\n${clone.innerHTML}\n</html>`;
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;

@@ -36,7 +36,7 @@ export const AboutSection = () => {
                 style={{ animationDelay: "0.5s" }}
               >
                 <img
-                  src="https://images.pexels.com/photos/34335270/pexels-photo-34335270.jpeg?auto=compress&cs=tinysrgb&w=200"
+                  src="https://images.pexels.com/photos/2702805/pexels-photo-2702805.jpeg?auto=compress&cs=tinysrgb&w=200"
                   alt={lang === "pt" ? "Vinho a ser servido" : "Wine being poured"}
                   className="w-full h-full object-cover"
                   loading="lazy"
