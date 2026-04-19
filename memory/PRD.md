@@ -34,6 +34,7 @@ Build a landing page website for "Wine Village" - Portuguese Petiscaria (tapas r
 - Changed hero background from wine cellar to restaurant interior
 - Replaced all restaurant-interior images with food-only closeups
 - Ensured each dish image accurately represents the actual dish
+- Major redesign: dark editorial style with organic shapes, pill buttons, italic gold emphasis, glass-morphism cards (based on user reference screenshots)
 
 ## Backlog
 - P1: Add WhatsApp contact link
