@@ -197,7 +197,7 @@ export const menuItems = {
         pt: "Sopa cremosa de cogumelos frescos da estação",
         en: "Creamy fresh seasonal mushroom soup",
       },
-      image: "https://images.pexels.com/photos/6406460/pexels-photo-6406460.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.pexels.com/photos/29653179/pexels-photo-29653179.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
   ],
   mains: [
@@ -208,7 +208,7 @@ export const menuItems = {
         pt: "Ovos estrelados sobre batatas fritas e presunto",
         en: "Fried eggs over crispy potatoes and ham",
       },
-      image: "https://images.unsplash.com/photo-1686860795269-204f01c87d8c?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600",
+      image: "https://images.unsplash.com/photo-1608039839583-5eac014f24b0?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600",
     },
     {
       id: "picanha",
@@ -246,7 +246,7 @@ export const menuItems = {
         pt: "O nosso prato estrela \u2014 risoto cremoso com cogumelos frescos e parmesão",
         en: "Our star dish \u2014 creamy risotto with fresh mushrooms and parmesan",
       },
-      image: "https://images.pexels.com/photos/14537683/pexels-photo-14537683.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.pexels.com/photos/11190139/pexels-photo-11190139.jpeg?auto=compress&cs=tinysrgb&w=600",
       star: true,
     },
     {
@@ -256,7 +256,7 @@ export const menuItems = {
         pt: "Risoto cremoso com legumes frescos da estação",
         en: "Creamy risotto with fresh seasonal vegetables",
       },
-      image: "https://images.pexels.com/photos/6406460/pexels-photo-6406460.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.unsplash.com/photo-1623067173902-ee323884a53c?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600",
     },
     {
       id: "pasta-pesto",
@@ -265,7 +265,7 @@ export const menuItems = {
         pt: "Massa fresca com pesto artesanal de manjericão",
         en: "Fresh pasta with artisanal basil pesto",
       },
-      image: "https://images.pexels.com/photos/21327986/pexels-photo-21327986.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.unsplash.com/photo-1757221254415-6e2f57550caa?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600",
     },
   ],
   desserts: [
@@ -285,7 +285,7 @@ export const menuItems = {
         pt: "Crepe quente com gelado artesanal de avelã",
         en: "Warm crepe with artisanal hazelnut ice cream",
       },
-      image: "https://images.pexels.com/photos/2581022/pexels-photo-2581022.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.pexels.com/photos/31314185/pexels-photo-31314185.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
       id: "eton-mess",
@@ -294,7 +294,7 @@ export const menuItems = {
         pt: "Merengue, frutos vermelhos e chantilly",
         en: "Meringue, berries and whipped cream",
       },
-      image: "https://images.pexels.com/photos/6406460/pexels-photo-6406460.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.pexels.com/photos/34552000/pexels-photo-34552000.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
   ],
   drinks: [
@@ -305,7 +305,7 @@ export const menuItems = {
         pt: "A nossa sangria artesanal com maracujá fresco \u2014 favorita dos clientes",
         en: "Our artisanal sangria with fresh passion fruit \u2014 customer favourite",
       },
-      image: "https://images.unsplash.com/photo-1754594537133-796eb54f206c?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600",
+      image: "https://images.unsplash.com/photo-1618688224904-0b77adb7d178?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=600",
       star: true,
     },
     {
@@ -315,7 +315,7 @@ export const menuItems = {
         pt: "Extensa seleção de vinhos portugueses premium",
         en: "Extensive selection of premium Portuguese wines",
       },
-      image: "https://images.pexels.com/photos/14794082/pexels-photo-14794082.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: "https://images.pexels.com/photos/5004027/pexels-photo-5004027.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
   ],
 };
@@ -357,6 +357,5 @@ export const reviewsData = [
 
 export const images = {
   hero: "https://images.pexels.com/photos/5083907/pexels-photo-5083907.jpeg?auto=compress&cs=tinysrgb&w=1920",
-  about: "https://images.pexels.com/photos/29519419/pexels-photo-29519419.jpeg?auto=compress&cs=tinysrgb&w=800",
-  wine_pour: "https://images.pexels.com/photos/34335270/pexels-photo-34335270.jpeg?auto=compress&cs=tinysrgb&w=800",
+  about: "https://images.pexels.com/photos/5004027/pexels-photo-5004027.jpeg?auto=compress&cs=tinysrgb&w=800",
 };
