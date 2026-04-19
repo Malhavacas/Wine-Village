@@ -12,7 +12,15 @@ module.exports = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-  		colors: {
+  		fontFamily: {
+				serif: ['Playfair Display', 'Georgia', 'serif'],
+				sans: ['Outfit', 'system-ui', 'sans-serif'],
+			},
+			colors: {
+				wine: { DEFAULT: '#722F37', dark: '#4A1C24' },
+				cream: '#F5F5DC',
+				gold: '#DAA520',
+				earth: '#8B4513',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

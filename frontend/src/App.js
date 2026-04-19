@@ -1,53 +1,42 @@
-import { useEffect } from "react";
+import { useState, useEffect, useCallback, createContext, useContext } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
+import { MenuSection } from "@/components/MenuSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
+import { LocationSection } from "@/components/LocationSection";
+import { Footer } from "@/components/Footer";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+export const LangContext = createContext();
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+export const useLang = () => useContext(LangContext);
 
 function App() {
+  const [lang, setLang] = useState("pt");
+
+  const toggleLang = useCallback(() => {
+    setLang((prev) => (prev === "pt" ? "en" : "pt"));
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <LangContext.Provider value={{ lang, toggleLang }}>
+      <div className="app-root" data-testid="app-root">
+        <Header />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <MenuSection />
+          <ReviewsSection />
+          <LocationSection />
+        </main>
+        <Footer />
+      </div>
+    </LangContext.Provider>
   );
 }
 
