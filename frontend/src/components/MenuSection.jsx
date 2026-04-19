@@ -1,59 +1,52 @@
 import { useLang } from "@/App";
 import { content, menuItems } from "@/data/content";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Star } from "lucide-react";
 import { useState } from "react";
+
+const categories = ["starters", "mains", "risottos", "desserts", "drinks"];
 
 const MenuCard = ({ item, lang, index }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <div
-      className="group reveal-item relative overflow-hidden rounded-sm bg-white"
+      className="group reveal-item relative overflow-hidden rounded-2xl cursor-default"
       style={{
         animationDelay: `${index * 0.08}s`,
-        border: item.star ? "1px solid rgba(218,165,32,0.5)" : "1px solid rgba(44,17,12,0.08)",
+        backgroundColor: "#1a0f0a",
+        border: item.star ? "1px solid rgba(218,165,32,0.4)" : "1px solid rgba(245,240,232,0.06)",
       }}
       data-testid={`menu-item-${item.id}`}
     >
       {item.star && (
         <div
-          className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-1 rounded-sm text-xs font-sans"
-          style={{ backgroundColor: "#DAA520", color: "#2C110C" }}
+          className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-sans tracking-[0.1em] uppercase"
+          style={{ backgroundColor: "#DAA520", color: "#1a0f0a" }}
           data-testid={`star-badge-${item.id}`}
         >
-          <Star size={10} fill="#2C110C" color="#2C110C" />
+          <Star size={9} fill="#1a0f0a" color="#1a0f0a" />
           {lang === "pt" ? "Destaque" : "Star Dish"}
         </div>
       )}
 
       <div className="relative overflow-hidden h-48 sm:h-56">
-        {!imgLoaded && (
-          <div className="absolute inset-0 bg-wine/5 animate-pulse" />
-        )}
+        {!imgLoaded && <div className="absolute inset-0 img-shimmer" />}
         <img
           src={item.image}
           alt={item.name[lang]}
-          className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-            imgLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
           loading="lazy"
           onLoad={() => setImgLoaded(true)}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0f0a] via-transparent to-transparent opacity-60" />
       </div>
 
-      <div className="p-4">
-        <h3
-          className="font-serif text-lg mb-1"
-          style={{ color: "#2C110C" }}
-        >
+      <div className="p-5">
+        <h3 className="font-serif text-lg text-[#F5F0E8] mb-1.5">
           {item.name[lang]}
         </h3>
-        <p
-          className="font-sans text-sm leading-relaxed"
-          style={{ color: "#5C3A21" }}
-        >
+        <p className="font-sans text-[13px] leading-relaxed text-[#F5F0E8]/45">
           {item.desc[lang]}
         </p>
       </div>
@@ -65,72 +58,69 @@ export const MenuSection = () => {
   const { lang } = useLang();
   const t = content[lang].menu;
   const ref = useScrollReveal();
+  const [activeTab, setActiveTab] = useState("risottos");
 
-  const categories = [
-    { key: "starters", label: t.categories.starters },
-    { key: "mains", label: t.categories.mains },
-    { key: "risottos", label: t.categories.risottos },
-    { key: "desserts", label: t.categories.desserts },
-    { key: "drinks", label: t.categories.drinks },
-  ];
+  const catLabels = {
+    starters: t.categories.starters,
+    mains: t.categories.mains,
+    risottos: t.categories.risottos,
+    desserts: t.categories.desserts,
+    drinks: t.categories.drinks,
+  };
 
   return (
     <section
       id="menu"
-      className="py-20 md:py-28"
-      style={{ backgroundColor: "#FAF9F6" }}
+      className="py-24 md:py-32"
+      style={{ backgroundColor: "#0d0806" }}
       data-testid="menu-section"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-8" ref={ref}>
+      <div className="max-w-7xl mx-auto px-5 md:px-10" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-14 reveal-item">
-          <p
-            className="text-xs font-sans uppercase tracking-[0.2em] mb-4"
-            style={{ color: "#DAA520" }}
-            data-testid="menu-overline"
-          >
-            {t.overline}
-          </p>
+        <div className="text-center mb-16 reveal-item">
+          <div className="flex justify-center mb-6">
+            <div className="overline-decorated" data-testid="menu-overline">
+              <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-[#DAA520]">
+                {t.overline}
+              </span>
+            </div>
+          </div>
           <h2
-            className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight"
-            style={{ color: "#2C110C" }}
+            className="font-serif text-[2.5rem] sm:text-[3.2rem] lg:text-[3.8rem] tracking-tight text-[#F5F0E8]"
             data-testid="menu-title"
           >
-            {t.title}
+            {lang === "pt" ? (
+              <>Os nossos <em className="text-emphasis">petiscos.</em></>
+            ) : (
+              <>Our <em className="text-emphasis">tapas.</em></>
+            )}
           </h2>
         </div>
 
-        {/* Tabs */}
-        <Tabs defaultValue="risottos" className="reveal-item" style={{ animationDelay: "0.1s" }}>
-          <TabsList
-            className="flex flex-wrap justify-center gap-2 mb-10 bg-transparent h-auto p-0"
-            data-testid="menu-tabs"
-          >
-            {categories.map((cat) => (
-              <TabsTrigger
-                key={cat.key}
-                value={cat.key}
-                className="px-5 py-2.5 text-sm font-sans rounded-sm border transition-all duration-300
-                  data-[state=active]:bg-wine data-[state=active]:text-cream data-[state=active]:border-wine
-                  data-[state=inactive]:bg-transparent data-[state=inactive]:border-wine/20 data-[state=inactive]:text-wine-dark
-                  hover:border-wine/40 min-h-[44px]"
-                data-testid={`menu-tab-${cat.key}`}
-              >
-                {cat.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
+        {/* Tab pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-14 reveal-item" style={{ animationDelay: "0.1s" }} data-testid="menu-tabs">
           {categories.map((cat) => (
-            <TabsContent key={cat.key} value={cat.key} data-testid={`menu-content-${cat.key}`}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {(menuItems[cat.key] || []).map((item, idx) => (
-                  <MenuCard key={item.id} item={item} lang={lang} index={idx} />
-                ))}
-              </div>
-            </TabsContent>
+            <button
+              key={cat}
+              onClick={() => setActiveTab(cat)}
+              className={`px-6 py-3 rounded-full text-[11px] font-sans tracking-[0.15em] uppercase transition-all duration-400 min-h-[44px] ${
+                activeTab === cat
+                  ? "bg-[#DAA520] text-[#1a0f0a] shadow-lg shadow-[#DAA520]/20"
+                  : "bg-transparent border border-[#F5F0E8]/12 text-[#F5F0E8]/50 hover:border-[#DAA520]/40 hover:text-[#DAA520]"
+              }`}
+              data-testid={`menu-tab-${cat}`}
+            >
+              {catLabels[cat]}
+            </button>
           ))}
-        </Tabs>
+        </div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-testid={`menu-content-${activeTab}`}>
+          {(menuItems[activeTab] || []).map((item, idx) => (
+            <MenuCard key={item.id} item={item} lang={lang} index={idx} />
+          ))}
+        </div>
       </div>
     </section>
   );

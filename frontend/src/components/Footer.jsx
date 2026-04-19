@@ -1,7 +1,6 @@
 import { useLang } from "@/App";
 import { content } from "@/data/content";
-import { Facebook, Phone, MapPin, Download } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Facebook, Phone, MapPin, Download, MessageCircle } from "lucide-react";
 
 export const Footer = () => {
   const { lang } = useLang();
@@ -24,121 +23,136 @@ export const Footer = () => {
   };
 
   return (
-    <footer
-      className="py-16 md:py-20"
-      style={{ backgroundColor: "#4A1C24" }}
-      data-testid="footer"
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <div data-testid="footer-brand">
-            <h3 className="font-serif text-2xl tracking-tight text-cream mb-3">
-              Wine Village
-            </h3>
-            <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(245,245,220,0.6)" }}>
-              {t.tagline}
-            </p>
-
-            {/* Social */}
-            <div className="flex gap-3 mt-6">
-              <a
-                href="https://facebook.com/winevillageagueda"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-sm transition-all duration-300 hover:bg-wine/50"
-                style={{ backgroundColor: "rgba(245,245,220,0.1)" }}
-                data-testid="footer-facebook"
-              >
-                <Facebook size={16} style={{ color: "#F5F5DC" }} />
-              </a>
-              <a
-                href="tel:+351234064340"
-                className="w-10 h-10 flex items-center justify-center rounded-sm transition-all duration-300 hover:bg-wine/50"
-                style={{ backgroundColor: "rgba(245,245,220,0.1)" }}
-                data-testid="footer-phone"
-              >
-                <Phone size={16} style={{ color: "#F5F5DC" }} />
-              </a>
-              <a
-                href="https://www.google.com/maps/search/Wine+Village+Águeda"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-sm transition-all duration-300 hover:bg-wine/50"
-                style={{ backgroundColor: "rgba(245,245,220,0.1)" }}
-                data-testid="footer-maps"
-              >
-                <MapPin size={16} style={{ color: "#F5F5DC" }} />
-              </a>
-            </div>
-          </div>
-
-          {/* Hours */}
-          <div data-testid="footer-hours">
-            <h4
-              className="text-xs font-sans uppercase tracking-[0.2em] mb-5"
-              style={{ color: "#DAA520" }}
-            >
-              {t.hours_title}
-            </h4>
-            <div className="flex flex-col gap-3">
-              {t.hours.map((h, idx) => (
-                <div key={idx} className="flex justify-between items-center">
-                  <span className="font-sans text-sm" style={{ color: "rgba(245,245,220,0.7)" }}>
-                    {h.day}
-                  </span>
-                  <span className="font-sans text-sm font-medium text-cream">
-                    {h.time}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <p
-              className="mt-5 font-sans text-xs font-medium"
-              style={{ color: "#DAA520" }}
-              data-testid="footer-reserve-note"
-            >
-              {t.reserve_cta}
-            </p>
-          </div>
-
-          {/* Download */}
-          <div data-testid="footer-download-section">
-            <h4
-              className="text-xs font-sans uppercase tracking-[0.2em] mb-5"
-              style={{ color: "#DAA520" }}
-            >
-              {t.download_title}
-            </h4>
-            <button
-              onClick={handleDownload}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-wine text-cream font-sans text-sm tracking-wide rounded-sm transition-all duration-300 hover:bg-wine-dark active:scale-[0.98] min-h-[44px]"
-              data-testid="download-html-btn"
-            >
-              <Download size={16} />
-              {t.download_btn}
-            </button>
-            <p
-              className="mt-3 font-sans text-xs text-center"
-              style={{ color: "rgba(245,245,220,0.5)" }}
-            >
-              {t.download_note}
-            </p>
-          </div>
-        </div>
-
-        <Separator className="bg-cream/10 mb-8" />
-
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="font-sans text-xs" style={{ color: "rgba(245,245,220,0.4)" }}>
-            &copy; {new Date().getFullYear()} Wine Village. {t.rights}.
-          </p>
-          <p className="font-sans text-xs" style={{ color: "rgba(245,245,220,0.4)" }}>
-            {t.payment}
-          </p>
-        </div>
+    <>
+      {/* Floating Contact Buttons - Fixed */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3" data-testid="floating-contacts">
+        <a
+          href="https://facebook.com/winevillageagueda"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 rounded-full bg-[#722F37] flex items-center justify-center text-[#F5F0E8] shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-[#722F37]/40 hover:shadow-2xl"
+          data-testid="floating-facebook"
+          title="Facebook"
+        >
+          <MessageCircle size={18} />
+        </a>
+        <a
+          href="tel:+351234064340"
+          className="w-12 h-12 rounded-full bg-[#DAA520] flex items-center justify-center text-[#1a0f0a] shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-[#DAA520]/40 hover:shadow-2xl"
+          data-testid="floating-phone"
+          title="234 064 340"
+        >
+          <Phone size={18} />
+        </a>
       </div>
-    </footer>
+
+      {/* Footer */}
+      <footer
+        className="py-20 md:py-24"
+        style={{ backgroundColor: "#0d0806", borderTop: "1px solid rgba(218,165,32,0.08)" }}
+        data-testid="footer"
+      >
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-14 mb-16">
+            {/* Brand */}
+            <div data-testid="footer-brand">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-full border border-[#DAA520]/40 flex items-center justify-center">
+                  <span className="font-serif text-sm text-[#DAA520]">W</span>
+                </div>
+                <span className="font-sans text-xs tracking-[0.2em] uppercase text-[#F5F0E8]">
+                  Wine Village
+                </span>
+              </div>
+              <p className="font-sans text-[13px] leading-[1.8] text-[#F5F0E8]/35 mb-6">
+                {t.tagline}
+              </p>
+
+              {/* Social */}
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com/winevillageagueda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-[#F5F0E8]/10 flex items-center justify-center transition-all duration-300 hover:border-[#DAA520]/50 hover:bg-[#DAA520]/5"
+                  data-testid="footer-facebook"
+                >
+                  <Facebook size={14} className="text-[#F5F0E8]/40" />
+                </a>
+                <a
+                  href="tel:+351234064340"
+                  className="w-10 h-10 rounded-full border border-[#F5F0E8]/10 flex items-center justify-center transition-all duration-300 hover:border-[#DAA520]/50 hover:bg-[#DAA520]/5"
+                  data-testid="footer-phone"
+                >
+                  <Phone size={14} className="text-[#F5F0E8]/40" />
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/Wine+Village+Águeda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-[#F5F0E8]/10 flex items-center justify-center transition-all duration-300 hover:border-[#DAA520]/50 hover:bg-[#DAA520]/5"
+                  data-testid="footer-maps"
+                >
+                  <MapPin size={14} className="text-[#F5F0E8]/40" />
+                </a>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div data-testid="footer-hours">
+              <h4 className="text-[11px] font-sans uppercase tracking-[0.25em] text-[#DAA520] mb-6">
+                {t.hours_title}
+              </h4>
+              <div className="flex flex-col gap-3.5">
+                {t.hours.map((h, idx) => (
+                  <div key={idx} className="flex justify-between items-center">
+                    <span className="font-sans text-[13px] text-[#F5F0E8]/35">
+                      {h.day}
+                    </span>
+                    <span className="font-sans text-[13px] text-[#F5F0E8]/70">
+                      {h.time}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-[10px] font-sans tracking-[0.15em] uppercase text-[#DAA520]/60" data-testid="footer-reserve-note">
+                {t.reserve_cta}
+              </p>
+            </div>
+
+            {/* Download */}
+            <div data-testid="footer-download-section">
+              <h4 className="text-[11px] font-sans uppercase tracking-[0.25em] text-[#DAA520] mb-6">
+                {t.download_title}
+              </h4>
+              <button
+                onClick={handleDownload}
+                className="btn-pill btn-pill-dark w-full justify-center"
+                data-testid="download-html-btn"
+              >
+                <Download size={14} />
+                {t.download_btn}
+              </button>
+              <p className="mt-4 font-sans text-[11px] text-[#F5F0E8]/25 text-center">
+                {t.download_note}
+              </p>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="h-[1px] bg-[#F5F0E8]/5 mb-8" />
+
+          {/* Bottom */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="font-sans text-[11px] text-[#F5F0E8]/20">
+              &copy; {new Date().getFullYear()} Wine Village. {t.rights}.
+            </p>
+            <p className="font-sans text-[11px] text-[#F5F0E8]/20">
+              {t.payment}
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 };

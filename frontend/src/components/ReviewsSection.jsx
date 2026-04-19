@@ -5,43 +5,33 @@ import { Star, Quote } from "lucide-react";
 
 const ReviewCard = ({ review, lang, index }) => (
   <div
-    className="reveal-item p-6 md:p-8 rounded-sm bg-white relative"
-    style={{
-      animationDelay: `${index * 0.12}s`,
-      border: "1px solid rgba(218,165,32,0.2)",
-    }}
+    className="reveal-item glass-card-dark p-7 md:p-9 relative overflow-hidden"
+    style={{ animationDelay: `${index * 0.1}s` }}
     data-testid={`review-card-${index}`}
   >
     <Quote
-      size={28}
-      className="absolute top-4 right-4 opacity-10"
-      style={{ color: "#722F37" }}
+      size={40}
+      className="absolute top-5 right-5 text-[#DAA520]/8"
     />
 
     {/* Stars */}
-    <div className="flex gap-0.5 mb-4" data-testid={`review-stars-${index}`}>
+    <div className="flex gap-0.5 mb-5" data-testid={`review-stars-${index}`}>
       {Array.from({ length: review.rating }).map((_, i) => (
-        <Star key={i} size={14} fill="#DAA520" color="#DAA520" />
+        <Star key={i} size={13} fill="#DAA520" color="#DAA520" />
       ))}
     </div>
 
     {/* Text */}
-    <p
-      className="font-sans text-base leading-relaxed mb-5 italic"
-      style={{ color: "#5C3A21" }}
-    >
+    <p className="font-serif text-base sm:text-lg leading-[1.7] text-[#F5F0E8]/75 mb-7 italic">
       "{review.text[lang]}"
     </p>
 
     {/* Author */}
     <div className="flex items-center gap-3">
-      <div
-        className="w-9 h-9 rounded-full flex items-center justify-center font-serif text-sm"
-        style={{ backgroundColor: "#722F37", color: "#F5F5DC" }}
-      >
+      <div className="w-10 h-10 rounded-full flex items-center justify-center font-serif text-sm bg-[#722F37] text-[#DAA520]">
         {review.name.charAt(0)}
       </div>
-      <span className="font-sans text-sm font-medium" style={{ color: "#2C110C" }}>
+      <span className="font-sans text-[13px] tracking-wide text-[#F5F0E8]/60">
         {review.name}
       </span>
     </div>
@@ -56,43 +46,43 @@ export const ReviewsSection = () => {
   return (
     <section
       id="reviews"
-      className="py-20 md:py-28 bg-cream"
+      className="py-24 md:py-32"
+      style={{ backgroundColor: "#120a07" }}
       data-testid="reviews-section"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-8" ref={ref}>
+      <div className="max-w-7xl mx-auto px-5 md:px-10" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-14 reveal-item">
-          <p
-            className="text-xs font-sans uppercase tracking-[0.2em] mb-4"
-            style={{ color: "#DAA520" }}
-            data-testid="reviews-overline"
-          >
-            {t.overline}
-          </p>
+        <div className="text-center mb-16 reveal-item">
+          <div className="flex justify-center mb-6">
+            <div className="overline-decorated" data-testid="reviews-overline">
+              <span className="text-[11px] font-sans uppercase tracking-[0.25em] text-[#DAA520]">
+                {t.overline}
+              </span>
+            </div>
+          </div>
           <h2
-            className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4"
-            style={{ color: "#2C110C" }}
+            className="font-serif text-[2.5rem] sm:text-[3.2rem] lg:text-[3.8rem] tracking-tight text-[#F5F0E8] mb-6"
             data-testid="reviews-title"
           >
-            {t.title}
+            {lang === "pt" ? (
+              <>O que dizem <em className="text-emphasis">de nós.</em></>
+            ) : (
+              <>What they say <em className="text-emphasis">about us.</em></>
+            )}
           </h2>
 
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm"
-            style={{
-              border: "1px solid rgba(218,165,32,0.4)",
-              backgroundColor: "rgba(218,165,32,0.08)",
-            }}
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full"
+            style={{ border: "1px solid rgba(218,165,32,0.25)", backgroundColor: "rgba(218,165,32,0.06)" }}
             data-testid="reviews-badge"
           >
             <div className="flex gap-0.5">
-              {[1, 2, 3, 4].map((i) => (
-                <Star key={i} size={14} fill="#DAA520" color="#DAA520" />
+              {[1, 2, 3, 4, 5].map((i) => (
+                <Star key={i} size={12} fill="#DAA520" color="#DAA520" className={i === 5 ? "opacity-50" : ""} />
               ))}
-              <Star size={14} fill="#DAA520" color="#DAA520" style={{ clipPath: "inset(0 50% 0 0)" }} />
             </div>
-            <span className="text-sm font-sans" style={{ color: "#2C110C" }}>
+            <span className="text-[11px] font-sans tracking-[0.1em] uppercase text-[#F5F0E8]/50">
               {t.badge} &middot; {t.subtitle}
             </span>
           </div>
