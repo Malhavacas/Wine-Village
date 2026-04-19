@@ -1,0 +1,132 @@
+{
+  "project_name": "Wine Village",
+  "theme": "LIGHT",
+  "archetype": "Organic & Earthy mixed with Jewel & Luxury",
+  "mood": "Elegant, Cozy, Authentic, Sensory",
+  "design_philosophy": "Embrace the warmth of a Portuguese Petiscaria. Use deep, rich wine reds against warm cream backgrounds. Textures should feel like a rustic wine cellar meets fine dining. 90% mobile usage dictates a rigid, highly scannable, vertical-first layout with thumb-friendly touch targets.",
+  "colors": {
+    "background": {
+      "primary": "#F5F5DC",
+      "secondary": "#FAF9F6",
+      "inverse": "#2C110C"
+    },
+    "text": {
+      "primary": "#2C110C",
+      "secondary": "#5C3A21",
+      "inverse": "#F5F5DC",
+      "accent": "#722F37"
+    },
+    "brand": {
+      "burgundy": "#722F37",
+      "wine_dark": "#4A1C24",
+      "gold": "#DAA520",
+      "earth": "#8B4513"
+    },
+    "ui": {
+      "border": "rgba(44, 17, 12, 0.1)",
+      "border_gold": "rgba(218, 165, 32, 0.4)",
+      "overlay_hero": "linear-gradient(to bottom, rgba(44,17,12,0.7), rgba(114,47,55,0.4))"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Playfair Display",
+      "weights": ["400", "600", "700"],
+      "usage": "Hero titles, section headers, menu categories. Must use tracking-tight for sizes above 32px."
+    },
+    "body": {
+      "family": "Outfit",
+      "weights": ["300", "400", "500"],
+      "usage": "Descriptions, UI elements, button texts. Clean geometry contrasts the ornate serif."
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl font-serif tracking-tight text-inverse",
+      "h2": "text-4xl sm:text-5xl font-serif text-primary",
+      "h3": "text-2xl sm:text-3xl font-serif text-accent",
+      "body": "text-base sm:text-lg font-sans text-secondary leading-relaxed",
+      "overline": "text-xs font-sans uppercase tracking-[0.2em] text-gold"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Mobile-First Dominance. Desktop layout is secondary but must scale gracefully.",
+    "spacing_scale": "Use generous vertical padding between sections (py-16 md:py-24).",
+    "container": "max-w-7xl mx-auto px-6 md:px-8",
+    "components": {
+      "header": "Sticky top, backdrop-blur-xl bg-[#F5F5DC]/80, border-b border-[#2C110C]/10. Must contain click-to-call icon for mobile.",
+      "buttons": "rounded-none or highly subtle rounded-sm. Solid burgundy bg with cream text, or cream bg with gold border.",
+      "cards": "Cardless design preferred. Use pure images with text below, or delicate 1px border-[#DAA520]/30 on cream backgrounds."
+    }
+  },
+  "motion_and_interactions": {
+    "scroll": "Smooth scrolling (Lenis recommended if possible, else native smooth scroll). Parallax effect on the Hero background.",
+    "reveal": "Staggered fade-up for Menu items and Reviews. Use framer-motion.",
+    "hover": "Images scale up slightly (scale-105) inside overflow-hidden containers. Text colors shift slightly."
+  },
+  "image_urls": [
+    {
+      "category": "hero_background",
+      "url": "https://images.pexels.com/photos/2581022/pexels-photo-2581022.jpeg",
+      "description": "Long corridor of wooden barrels in a winery cellar. Use with heavy wine-dark gradient overlay for text contrast."
+    },
+    {
+      "category": "menu_tapas_1",
+      "url": "https://images.pexels.com/photos/21327986/pexels-photo-21327986.jpeg",
+      "description": "Delicious Spanish/Portuguese tapas on a rustic wooden table."
+    },
+    {
+      "category": "menu_tapas_2",
+      "url": "https://images.pexels.com/photos/6760859/pexels-photo-6760859.jpeg",
+      "description": "Outdoor gathering with a variety of tapas."
+    },
+    {
+      "category": "menu_risotto",
+      "url": "https://images.pexels.com/photos/6406460/pexels-photo-6406460.jpeg",
+      "description": "Signature Mushroom Risotto on an elegant plate."
+    },
+    {
+      "category": "menu_wine",
+      "url": "https://images.pexels.com/photos/29436323/pexels-photo-29436323.jpeg",
+      "description": "Elegant close-up of red wine being poured into a glass."
+    },
+    {
+      "category": "about_image",
+      "url": "https://images.pexels.com/photos/34335270/pexels-photo-34335270.jpeg",
+      "description": "Red wine being elegantly poured into a glass against a dark backdrop. Use to anchor the 'Our Story' or 'Wine Selection' section."
+    }
+  ],
+  "sections_breakdown": [
+    {
+      "id": "hero",
+      "description": "Full height (min-h-[90vh]). Background image: wine barrels with gradient overlay. Content: Overline (Águeda, Portugal), H1 (Wine Village), Subtitle, CTA (Reserve Table / Contact), PT/EN Language Toggle in top corner."
+    },
+    {
+      "id": "about",
+      "description": "Side-by-side on desktop, stacked on mobile. Text content explaining the 4.5 star legacy, authentic petiscos, and Portuguese wine culture. Image: Red wine pouring."
+    },
+    {
+      "id": "menu",
+      "description": "Grid layout (1 col mobile, 2/3 cols desktop). Highlight: Mushroom Risotto (Star item), Tapas, and Wine. Use images provided. Minimalist text under images."
+    },
+    {
+      "id": "reviews",
+      "description": "Carousel or stacked cards showcasing top Google Reviews (mentioning 4.5 stars / 273 reviews). Use gold stars for visual trust."
+    },
+    {
+      "id": "location_and_contact",
+      "description": "Embedded Google Maps iframe (Águeda). Click-to-call button. Facebook hyperlink. Direct reservation link."
+    },
+    {
+      "id": "footer",
+      "description": "Deep wine background (#4A1C24). Gold typography. Include the 'Download HTML' button as requested."
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Strictly adhere to the PT-PT primary and EN secondary language requirement. Set up a simple React state (e.g., const [lang, setLang] = useState('pt')) to toggle text across the page.",
+    "Mobile layout is critical (90% traffic). Ensure touch targets (buttons, links) are at least 44px tall. Use a sticky mobile bottom bar or highly accessible top sticky header for the 'Click-to-Call' functionality.",
+    "Implement the 'Download HTML' button at the bottom: This can be a simple JS function that creates a Blob of the document.documentElement.outerHTML and triggers a download.",
+    "Do NOT use a database. Hardcode the menu, reviews, and content in a structured JSON object within the React code.",
+    "Use Lucide-React or Phosphor Icons for social and contact icons (Phone, Facebook, Map Pin).",
+    "Apply `data-testid` to all interactive elements for testing.",
+    "Ensure all text overlapping the hero image meets WCAG AA contrast by using the specified `overlay_hero` gradient."
+  ]
+}
